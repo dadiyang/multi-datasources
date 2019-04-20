@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.dadiyang.multidatasources.order.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.github.dadiyang.multidatasources.order.Order">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="company_name" property="companyName" jdbcType="INTEGER"/>
+        <result column="amount" property="amount" jdbcType="VARCHAR"/>
+        <result column="source" property="source" jdbcType="VARCHAR"/>
+        <result column="created_on" property="createdOn" jdbcType="INTEGER"/>
+        <result column="updated_on" property="updatedOn" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      id, username, company_name, amount,source,created_on,updated_on
+    </sql>
+    <!-- 按商机id查询 -->
+    <select id="getOrders" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_${table}
+        where id > #{lastId}
+        limit ${pageSize}
+    </select>
+    <select id="getOrdersByCreatedTime" resultMap="BaseResultMap"
+            parameterType="com.github.dadiyang.multidatasources.order.OrderQueryParam">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_${table}
+        where id > ${lastId}
+        and updated_on &gt;= #{begin}
+        and updated_on &lt; #{end}
+        limit ${pageSize}
+    </select>
+</mapper>

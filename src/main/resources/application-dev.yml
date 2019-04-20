@@ -1,0 +1,9 @@
+datasource:
+    ds-0:
+      url: jdbc:mysql://127.0.0.1:3306/db_order_0?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: aaa123
+    ds-1:
+      url: jdbc:mysql://127.0.0.1:3306/db_order_1?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: aaa123
