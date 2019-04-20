@@ -14,7 +14,7 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
     private static final ThreadLocal<String> DATA_SOURCE_KEY = new ThreadLocal<>();
 
     /**
-     * 设置当前线程数据源的 key
+     * 设置当前线程数据源的 key，这个 key 的值在注册 RoutingDataSource 的数据源 Map 时确定
      */
     public static void setDataSourceKey(String key) {
         DATA_SOURCE_KEY.set(key);

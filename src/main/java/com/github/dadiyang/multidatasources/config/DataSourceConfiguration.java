@@ -18,6 +18,8 @@ import java.util.Map;
 public class DataSourceConfiguration {
     /**
      * 用配置 DataSourceProperties 的方式可以避免不同数据源配置字段名称不同导致的配置项错误，如: url 和 jdbcUrl，下同
+     * <p>
+     * 因为 SpringBoot 的自动配置需要一个 DataSourceProperties，如果我们配置多个，必须指定一个为 Primary
      */
     @Bean
     @Primary
@@ -52,6 +54,8 @@ public class DataSourceConfiguration {
 
     /**
      * 使用 DependsOn 注解，以让其他数据源先初始化完毕，否则可能出现 Bean 初始化异常
+     * <p>
+     * 将这个 routingDataSource 指定为 Primary，即首选的数据源
      */
     @Bean
     @Primary
