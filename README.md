@@ -22,7 +22,11 @@
 
 我们有 32 张表，序号为 0~32，放在 2 个库中，每个库 16 张表，即 0 号表在 0 库的 0 表，16 号表在 1 库的 0 表。
 
-**用于演示的分库分表建表存储过程**
+**用于演示的分库分表建表存储过程：**
+
+注：若执行存储过程发生异常：Thread stack overrun: xxx bytes used of a xxxx byte stack, and……
+
+需要在 Mysql 配置文件 /etc/my.cnf 中配置 thread_stack = 256K，然后重启 Mysql
 
 ```sql
 CREATE DEFINER=`root`@`localhost` PROCEDURE `createTables`()
